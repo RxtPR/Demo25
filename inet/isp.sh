@@ -57,4 +57,4 @@ firewall-cmd --zone=internal --list-all
 echo -e "\n=== IntToExt policy ==="
 firewall-cmd --info-policy=IntToExt
 
-echo -e "\nНастройка firewalld на ISP завершена"
+echo -e "\nComplite"

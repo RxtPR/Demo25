@@ -31,4 +31,4 @@ echo -e "\n=== External zone ==="
 firewall-cmd --zone=external --list-all
 
 
-echo -e "\nНастройка firewalld на маршрутизаторе завершена"
+echo -e "\nComplite"
