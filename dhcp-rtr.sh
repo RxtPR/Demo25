@@ -3,7 +3,7 @@
 
 # Установка DHCP сервера
 apt-get update
-apt-get install -y isc-dhcp-server
+apt-get install -y dhcp-server
 
 # Расчет параметров сети 172.16.7.0/28
 # Маска: 255.255.255.240
@@ -27,11 +27,11 @@ subnet 172.16.7.0 netmask 255.255.255.240 {
 EOF
 
 # Указание интерфейса для прослушивания
-echo 'INTERFACESv4="ens19.200"' > /etc/default/isc-dhcp-server
+echo 'DHCPDARGS=enp0s8.200' > /etc/sysconfig/dhcpd
 
 # Запуск DHCP сервера
-systemctl restart isc-dhcp-server
-systemctl enable isc-dhcp-server
+systemctl restart dhcpd
+systemctl enable dhcpd
 
 echo "DHCP сервер настроен на HQ-RTR"
 echo "Сеть: 172.16.7.0/28"
