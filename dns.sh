@@ -16,11 +16,9 @@ options {
     listen-on-v6 port 53 { none; };
     directory "/var/named";
     
-    # РАЗРЕШАЕМ ЗАПРОСЫ ИЗ ВСЕХ ПОДСЕТЕЙ
     allow-query { any; };
     allow-recursion { any; };
     
-    # DNS серверы пересылки
     forwarders {
         8.8.8.8;
         8.8.4.4;
@@ -36,21 +34,18 @@ zone "au-team.irpo" IN {
     allow-update { none; };
 };
 
-# ЕДИНАЯ обратная зона для 172.16.X.X/16
 zone "16.172.in-addr.arpa" IN {
     type master;
     file "172.16.rev.zone";
     allow-update { none; };
 };
 
-# Обратная зона для 192.168.100.0/26
 zone "100.168.192.in-addr.arpa" IN {
     type master;
     file "192.168.100.rev.zone";
     allow-update { none; };
 };
 
-# Обратная зона для 192.168.200.0/27
 zone "200.168.192.in-addr.arpa" IN {
     type master;
     file "192.168.200.rev.zone";
@@ -77,14 +72,14 @@ $TTL 86400
 ; NS запись
 @          IN  NS  hq-srv.au-team.irpo.
 
-; A записи (ТОЧНО по таблице 2)
+; A
 hq-rtr     IN  A   172.16.4.2
 hq-srv     IN  A   192.168.100.2
 hq-cli     IN  A   172.16.7.3
 br-rtr     IN  A   172.16.5.2
 br-srv     IN  A   192.168.200.2
 
-; CNAME записи (ТОЧНО по таблице 2)
+; CNAME 
 moodle     IN  CNAME hq-rtr.au-team.irpo.
 wiki       IN  CNAME hq-rtr.au-team.irpo.
 EOF
@@ -102,11 +97,9 @@ $TTL 86400
 
 @          IN  NS  hq-srv.au-team.irpo.
 
-; PTR записи для адресов 172.16.X.X
-; HQ-RTR (172.16.4.2) - имеет PTR по таблице
+; PTR 
 2.4        IN  PTR hq-rtr.au-team.irpo.
 
-; HQ-CLI (172.16.7.3) - имеет PTR по таблице
 3.7        IN  PTR hq-cli.au-team.irpo.
 EOF
 
@@ -123,7 +116,7 @@ $TTL 86400
 
 @          IN  NS  hq-srv.au-team.irpo.
 
-; PTR записи
+; PTR
 1          IN  PTR hq-rtr.au-team.irpo.    ; 192.168.100.1
 2          IN  PTR hq-srv.au-team.irpo.    ; 192.168.100.2
 EOF
@@ -141,7 +134,7 @@ $TTL 86400
 
 @          IN  NS  hq-srv.au-team.irpo.
 
-; PTR записи (BR-SRV не имеет PTR по таблице)
+; PTR
 1          IN  PTR br-rtr.au-team.irpo.    ; 192.168.200.1
 EOF
 

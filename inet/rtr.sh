@@ -1,6 +1,8 @@
 #!/bin/bash
 # Настройка firewalld на маршрутизаторах
-
+cat > /etc/sysctl.conf << 'EOF'
+net.ipv4.ip_forward = 1
+EOF
 # Установка firewalld (если не установлен)
 apt-get update
 apt-get install -y firewalld
@@ -22,7 +24,10 @@ firewall-cmd --reload
 echo "=== Trusted zone ==="
 firewall-cmd --zone=trusted --list-all
 
+firewall-cmd --zone=public --add-forward --permanent
+firewall-cmd --zone=public --add-masquerade --permanent
 echo -e "\n=== External zone ==="
 firewall-cmd --zone=external --list-all
+
 
 echo -e "\nНастройка firewalld на маршрутизаторе завершена"

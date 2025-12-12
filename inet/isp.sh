@@ -1,6 +1,10 @@
 #!/bin/bash
 # Настройка firewalld на ISP
 
+cat > /etc/sysctl.conf << 'EOF'
+net.ipv4.ip_forward = 1
+EOF
+
 # Установка firewalld (если не установлен)
 apt-get update
 apt-get install -y firewalld

@@ -23,9 +23,7 @@ cat > /etc/ansible/hosts << EOF
 172.16.5.2 ansible_user=net_admin
 
 [all:vars]
-ansible_ssh_pass=P@ssw0rd  # для sshuser, для net_admin другой пароль
-# Для net_admin пароль P@$$word, но в inventory нельзя указывать несколько разных паролей для разных групп? 
-# Лучше указать переменные на уровне групп или хостов.
+ansible_ssh_pass=P@ssw0rd 
 EOF
 
 # Но так как у нас два разных пользователя с разными паролями, то лучше указать переменные для каждой группы отдельно.
