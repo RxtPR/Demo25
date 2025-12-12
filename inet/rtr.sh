@@ -25,7 +25,8 @@ echo "=== Trusted zone ==="
 firewall-cmd --zone=trusted --list-all
 
 firewall-cmd --zone=public --add-forward --permanent
-firewall-cmd --zone=public --add-masquerade --permanent
+firewall-cmd --zone=public --add-masquerade
+firewall-cmd --runtime-to-permanent
 echo -e "\n=== External zone ==="
 firewall-cmd --zone=external --list-all
 
