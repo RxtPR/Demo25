@@ -44,7 +44,6 @@ firewall-cmd --policy IntToExt --set-target ACCEPT --permanent
 
 firewall-cmd --permanent --zone=internal --set-target=ACCEPT
 firewall-cmd --permanent --zone=internal --add-port=89/udp
-
 # Финальная перезагрузка
 firewall-cmd --reload
 
