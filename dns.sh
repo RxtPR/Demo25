@@ -159,12 +159,4 @@ echo "Запуск службы BIND..."
 systemctl enable --now named
 systemctl status named
 
-echo "================================================"
-echo "Настройка завершена! DNS сервер работает."
-echo "IP сервера: 192.168.100.2"
-echo "Прямые записи настроены для:"
-echo "  hq-rtr, hq-srv, hq-cli, br-rtr, br-srv"
-echo "  moodle (CNAME), wiki (CNAME)"
-echo "Обратные записи (PTR) настроены для:"
-echo "  hq-rtr, hq-srv, hq-cli"
-echo "================================================"
+echo "dns start"

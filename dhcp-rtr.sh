@@ -33,10 +33,4 @@ echo 'DHCPDARGS=enp0s8.200' > /etc/sysconfig/dhcpd
 systemctl restart dhcpd
 systemctl enable dhcpd
 
-echo "DHCP сервер настроен на HQ-RTR"
-echo "Сеть: 172.16.7.0/28"
-echo "Пул адресов: 172.16.7.3 - 172.16.7.14"
-echo "Исключен адрес: 172.16.7.1 (маршрутизатор)"
-echo "Шлюз: 172.16.7.1"
-echo "DNS сервер: 192.168.100.2"
-echo "DNS суффикс: au-team.irpo"
+echo "DHCP start"
